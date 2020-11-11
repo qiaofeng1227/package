@@ -21,7 +21,7 @@
   - name: enable and create link for snap
     shell: |
       systemctl enable --now snapd.socket
-      /var/lib/snapd/snap
+      ln -sf /var/lib/snapd/snap /data
   when: ansible_os_family == "RedHat"
   
 - name: Install and upgrade core 
