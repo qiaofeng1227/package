@@ -38,7 +38,7 @@
   when: common_install_python_modules
 
 - debug: 
-    msg: "{{pip_install_result.msg}}"
+    msg: "{{pip_install_result}}"
     
 #3 Tool install
 - name: Install tools
