@@ -19,8 +19,8 @@
 
 #2 Pip install
 - block:
-  - name: pip upgrade
-    shell: python{{ansible_python.version.major}} -m pip install -U pip
+  - name: pip upgrade(python2 support latest pip version is 20.3.4)
+    shell: python{{ansible_python.version.major}} -m pip install -U "pip < 21.0"
     
   - name: Install PyMySQL on pip2
     pip:
