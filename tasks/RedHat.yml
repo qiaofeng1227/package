@@ -1,8 +1,8 @@
 - name: Get system version
   shell: |
-    issue_major=$( cat /etc/os-release | grep VERSION_ID | grep -Eo '[0-9]+\.?[0-9]+' | head -1 | awk -F'.' '{printf $1}')
-    echo $issue_major
-  register: issue_major
+    common_issue_major=$( cat /etc/os-release | grep VERSION_ID | grep -Eo '[0-9]+\.?[0-9]+' | head -1 | awk -F'.' '{printf $1}')
+    echo $common_issue_major
+  register: common_issue_major
   
 - name: System Upgrade
   yum: name=* state=latest
