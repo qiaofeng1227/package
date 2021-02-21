@@ -1,7 +1,9 @@
 - name: Check dpkg lock when Server first start
   become: yes
-  shell:  while sudo fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 5; done;
-  
+  shell:  |
+    while sudo fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 5; done;
+    while sudo fuser /var/lib/dpkg/lock-frontend >/dev/null 2>&1; do sleep 5; done;
+    
 - name: Upgrade all packages to the latest version
   apt:
     name: "*"
@@ -13,7 +15,9 @@
   
 - name: Check dpkg lock wait for Upgrade
   become: yes
-  shell:  while sudo fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 5; done;
+  shell:  |
+    while sudo fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 5; done;
+    while sudo fuser /var/lib/dpkg/lock-frontend >/dev/null 2>&1; do sleep 5; done;
 
 - block:
   - name: Install Common Software
