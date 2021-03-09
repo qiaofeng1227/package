@@ -28,6 +28,7 @@
       version: 0.10.1
       extra_args: "-U"
       executable: pip2
+    failed_when: False
 
   - name: Install pip requirements module
     pip:
