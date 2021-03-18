@@ -64,7 +64,7 @@
       name: [device-mapper-persistent-data,lvm2]
 
   - name: Add Docker repository
-    shell: wget -O /etc/yum.repos.d/docker-ce.repo {{docker_repository_url}}
+    shell: wget -O /etc/yum.repos.d/docker-ce.repo {{common_repository_url}}
     
   - name: Update release server
     shell: sudo sed -i "s/\$releasever/7/g" /etc/yum.repos.d/docker-ce.repo
