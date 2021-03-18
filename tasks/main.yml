@@ -84,7 +84,7 @@
 - block:
   - name: Install Docker Compose
     shell: |
-      curl -L "https://github.com/docker/compose/releases/download/{{docker_compose_version}}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+      curl -L "https://github.com/docker/compose/releases/download/{{common_compose_version}}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
       sudo chmod +x /usr/local/bin/docker-compose
       ln -sf /usr/local/bin/docker-compose  /usr/bin
   - name: Started and enable Docker
@@ -94,7 +94,7 @@
       state: restarted
 
   - name: Create an network for all application
-    shell: docker network create {{docker_addnetwork}}
+    shell: docker network create {{common_addnetwork}}
     failed_when: False
     
   - name: Get Docker Gateway
