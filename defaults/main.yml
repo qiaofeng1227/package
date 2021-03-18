@@ -17,4 +17,6 @@ common_install_tools:
 # when init=1, need upgrade system
 common_system_upgrade: True
 
+common_install_docker: False
+
 

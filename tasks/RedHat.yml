@@ -55,3 +55,24 @@
     path: /etc/rc.d/rc.local
     mode: 0750
   when: common_set_rclocal
+
+
+# install docker on CentOS
+- block:
+  - name: Install required packages
+    yum:
+      name: [device-mapper-persistent-data,lvm2]
+
+  - name: Add Docker repository
+    shell: wget -O /etc/yum.repos.d/docker-ce.repo {{docker_repository_url}}
+    
+  - name: Update release server
+    shell: sudo sed -i "s/\$releasever/7/g" /etc/yum.repos.d/docker-ce.repo
+    when: ansible_distribution == 'Amazon'
+
+  - name: Install Docker on {{ansible_distribution}}
+    yum:
+      name: [docker-ce,docker-ce-cli,containerd.io]
+      update_cache: yes
+      state: latest
+  when: common_install_docker
