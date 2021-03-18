@@ -19,7 +19,6 @@ common_system_upgrade: True
 
 # vars in the docker
 common_install_docker: False
-common_apps_dir: "/data/apps"
 common_compose_version: "1.26.2"
 common_repository_url: "https://download.docker.com/linux/centos/docker-ce.repo"
 common_addnetwork: "apps"
