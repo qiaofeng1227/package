@@ -16,7 +16,7 @@ common_install_tools:
 
 # when init=1, need upgrade system
 common_system_upgrade: True
-docker_addnetwork: apps
+docker_addnetwork: "apps"
 common_install_docker: False
 
 
