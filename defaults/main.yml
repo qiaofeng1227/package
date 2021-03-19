@@ -16,8 +16,12 @@ common_install_tools:
 
 # when init=1, need upgrade system
 common_system_upgrade: True
+<<<<<<< HEAD
 
 # vars in the docker
+=======
+common_docker_addnetwork: "apps"
+>>>>>>> dev
 common_install_docker: False
 common_compose_version: "1.26.2"
 common_repository_url: "https://download.docker.com/linux/centos/docker-ce.repo"
