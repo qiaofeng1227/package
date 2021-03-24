@@ -82,6 +82,11 @@
 
 # install docker
 - block:
+  - name: Create Docker user
+    user:
+      name: docker 
+      shell: /user/sbin/nologin
+      
   - name: Install Docker Compose
     shell: |
       curl -L "https://github.com/docker/compose/releases/download/{{common_compose_version}}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
