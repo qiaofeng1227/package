@@ -30,7 +30,7 @@
       executable: pip2
     when: ansible_os_family == "RedHat"
 
-  - name: Install pip requirements module
+  - name: Install pex requirements module
     pip:
       name: pexpect
       extra_args: "-U"
@@ -38,7 +38,7 @@
     failed_when: False
   when: common_install_python_modules
 
-  - name: Install pip requirements module
+  - name: Install pymysql requirements module
     pip:
       name: PyMySQL
       extra_args: "-U"
