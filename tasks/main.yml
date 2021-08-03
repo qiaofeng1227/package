@@ -32,15 +32,26 @@
 
   - name: Install pip requirements module
     pip:
-      name: [pexpect,PyMySQL]
+      name: pexpect
       extra_args: "-U"
-    register: pip_install_result
+    register: pex_install_result
+    failed_when: False
+  when: common_install_python_modules
+
+  - name: Install pip requirements module
+    pip:
+      name: PyMySQL
+      extra_args: "-U"
+    register: mysql_install_result
     failed_when: False
   when: common_install_python_modules
 
 - debug: 
-    msg: "{% if pip_install_result.msg is defined %} {{pip_install_result.msg}} {% endif %}"
-    
+    msg: "{% if pex_install_result.msg is defined %} {{pex_install_result.msg}} {% endif %}"
+
+- debug: 
+    msg: "{% if mysql_install_result.msg is defined %} {{mysql_install_result.msg}} {% endif %}"
+
 #3 Tool install
 - name: Install tools
   include_tasks: tools_{{item}}.yml
