@@ -36,7 +36,6 @@
       extra_args: "-U"
     register: pex_install_result
     failed_when: False
-  when: common_install_python_modules
 
   - name: Install pymysql requirements module
     pip:
