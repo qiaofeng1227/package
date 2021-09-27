@@ -12,6 +12,7 @@
   apt:
     name: "*"
     state: latest
+    update_cache: yes
     force_apt_get: True
     autoremove: yes
   when: common_system_upgrade and (init == '1' or init == 1)
