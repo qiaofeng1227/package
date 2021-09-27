@@ -1,7 +1,7 @@
 - name: Upgrade all packages to the latest version
   shell: apt-get update
-  when: common_system_upgrade and (init == '1' or init == 1)
-
+  when: common_system_upgrade
+  
 - name: Check dpkg lock when Server first start
   become: yes
   shell:  |
