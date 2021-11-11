@@ -6,6 +6,12 @@
   dnf: name=* state=latest
   when: common_system_upgrade and (init == '1' or init == 1) and ansible_distribution_major_version == "8"
 
+- name: OracleLinux8 create pip softlink
+  shell: |
+    ln -sf /usr/bin/pip-3 /usr/bin/pip3
+    ln -sf /usr/bin/pip-2 /usr/bin/pip2
+  when: ansible_distribution == 'OracleLinux' and ansible_distribution_major_version == "8"
+  
 - name: Install Extra Packages for Enterprise Linux on {{ansible_distribution}}, exclude Amaonz because scl will cause yum update error
   yum: 
     name: [epel-release,centos-release-scl]
