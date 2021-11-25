@@ -17,6 +17,22 @@
     update_cache: yes
     state: latest
   when: ansible_distribution != 'Amazon' and ansible_distribution != 'OracleLinux'
+
+- name: Install repo for OracleLinux
+  shell:  |
+    yum install oracle-epel-release-el{{ansible_distribution_major_version}}
+    yum install oracle-software-release-el{{ansible_distribution_major_version}}
+  when: ansible_distribution == 'OracleLinux'
+
+- name: Install scl repo for OracleLinux7
+  shell:  |
+    yum install oracle-softwarecollection-release-el7
+  when: ansible_distribution == 'OracleLinux' and ansible_distribution_major_version == 7
+
+- name: Install scl repo  for OracleLinux8
+  shell:  |
+    yum install scl-utils
+  when: ansible_distribution == 'OracleLinux' and ansible_distribution_major_version == 8
   
 - block:
   - name: Install Extra Packages for Enterprise Linux on {{ansible_distribution}},there is [releaseserver] in the linux repo,so download from websoft9 self repo 
