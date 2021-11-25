@@ -18,10 +18,14 @@
     state: latest
   when: ansible_distribution != 'Amazon' and ansible_distribution != 'OracleLinux'
 
-- name: Install epel and scl repo for OracleLinux
-  shell:  |
-    yum install oracle-epel-release-el{{ansible_distribution_major_version}}
-    yum install scl-utils
+- name: Install epel repo for OracleLinux
+  yum:
+    name: oracle-epel-release-el{{ansible_distribution_major_version}}
+  when: ansible_distribution == 'OracleLinux'
+
+- name: Install scl repo for OracleLinux
+  yum:
+    name: scl-utils
   when: ansible_distribution == 'OracleLinux'
   
 - block:
