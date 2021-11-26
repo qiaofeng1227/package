@@ -26,7 +26,7 @@
   - name: Install scl repo for OracleLinux
     yum:
       name: scl-utils
-  when: ansible_distribution == 'OracleLinux
+  when: ansible_distribution == 'OracleLinux'
   
 - block:
   - name: Install Extra Packages for Enterprise Linux on {{ansible_distribution}},there is [releaseserver] in the linux repo,so download from websoft9 self repo 
