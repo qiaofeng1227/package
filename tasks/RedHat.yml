@@ -18,15 +18,15 @@
     state: latest
   when: ansible_distribution != 'Amazon' and ansible_distribution != 'OracleLinux'
 
-- name: Install epel repo for OracleLinux
-  yum:
-    name: oracle-epel-release-el{{ansible_distribution_major_version}}
-  when: ansible_distribution == 'OracleLinux'
+- block:
+  - name: Install epel repo for OracleLinux
+    yum:
+      name: oracle-epel-release-el{{ansible_distribution_major_version}}
 
-- name: Install scl repo for OracleLinux
-  yum:
-    name: scl-utils
-  when: ansible_distribution == 'OracleLinux'
+  - name: Install scl repo for OracleLinux
+    yum:
+      name: scl-utils
+  when: ansible_distribution == 'OracleLinux
   
 - block:
   - name: Install Extra Packages for Enterprise Linux on {{ansible_distribution}},there is [releaseserver] in the linux repo,so download from websoft9 self repo 
@@ -48,7 +48,6 @@
   - name: Install Common Software
     yum: 
       name: [mosh,wget,openssl,unzip,bzip2,expect,at,tree,vim,screen,pwgen,git,htop,ImageMagick,inotify-tools,libselinux-python,yum-utils,gcc,jq,telnet]
-    when: ansible_distribution != 'OracleLinux'
   
   - name: intall mlocate
     shell: |
