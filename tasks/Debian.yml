@@ -10,6 +10,11 @@
     sleep 5s
 
 - block:
+  - name: Sleep when AmazonLinux ubuntu
+    shell: |
+      if [ -f "/usr/bin/amazon-ssm-agent" ];then sleep 120;fi
+    when: ansible_os_family == "Debian" 
+      
   - name: Install Common Software
     apt: 
       name: [acl,mosh,curl,gnupg2,ca-certificates,lsb-release,wget,openssl,unzip,bzip2,expect,at,tree,vim,screen,pwgen,git,htop,imagemagick,goaccess,jq]
