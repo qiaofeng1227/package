@@ -9,12 +9,7 @@
     while sudo fuser /var/lib/dpkg/lock-frontend >/dev/null 2>&1; do sleep 5; done;
     sleep 5s
 
-- block:
-  - name: Sleep when AmazonLinux ubuntu
-    shell: |
-      if [ -f "/usr/bin/amazon-ssm-agent" ];then sleep 120;fi
-    when: ansible_os_family == "Debian" 
-      
+- block:    
   - name: Install Common Software
     apt: 
       name: [acl,mosh,curl,gnupg2,ca-certificates,lsb-release,wget,openssl,unzip,bzip2,expect,at,tree,vim,screen,pwgen,git,htop,imagemagick,goaccess,jq]
