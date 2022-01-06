@@ -15,7 +15,6 @@
     state: latest
     force: yes
     only_upgrade: yes
-    lock_timeout: 120
     autoremove: yes
   when: common_system_upgrade and (init == '1' or init == 1)
 
