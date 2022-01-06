@@ -12,9 +12,7 @@
   apt:
     name: "*"
     state: latest
-    force: yes
     only_upgrade: yes
-    autoremove: yes
   when: common_system_upgrade and (init == '1' or init == 1)
 
 - block:    
