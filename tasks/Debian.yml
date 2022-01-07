@@ -1,5 +1,6 @@
-- name: Update apt repository list
-  shell: apt-get update
+- name: Run the equivalent of "apt-get update" as a separate step
+  apt:
+    update_cache: yes
   
 - name: Check dpkg lock when Server first start
   shell: lsof /var/lib/dpkg/lock
