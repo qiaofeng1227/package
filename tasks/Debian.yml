@@ -2,11 +2,11 @@
   shell: apt-get update
   
 - name: Check dpkg lock when Server first start
-  become: yes
-  shell:  |
-    while sudo lsof /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 5; done;
-    while sudo lsof /var/lib/dpkg/lock-frontend >/dev/null 2>&1; do sleep 5; done;
-    sleep 5s
+  shell: lsof /var/lib/dpkg/lock
+  register: result
+  until: result.stdout.find("/var/lib/dpkg/lock") == -1
+  retries: 50
+  delay: 10
     
 - name: Upgrade all packages to the latest version for production
   apt:
