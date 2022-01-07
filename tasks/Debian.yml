@@ -4,8 +4,8 @@
 - name: Check dpkg lock when Server first start
   become: yes
   shell:  |
-    while sudo fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 5; done;
-    while sudo fuser /var/lib/dpkg/lock-frontend >/dev/null 2>&1; do sleep 5; done;
+    while sudo lsof /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 5; done;
+    while sudo lsof /var/lib/dpkg/lock-frontend >/dev/null 2>&1; do sleep 5; done;
     sleep 5s
     
 - name: Upgrade all packages to the latest version for production
