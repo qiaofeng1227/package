@@ -3,4 +3,3 @@
   remote_user: root
   roles:
     - role_common
-  ignore_errors: yes 
