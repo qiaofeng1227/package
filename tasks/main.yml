@@ -16,7 +16,8 @@
 
 - set_fact:
     ansible_python_interpreter: "/usr/bin/python3"
-
+  when: ansible_distribution == "Debian"
+  
 - include: "{{ansible_os_family}}.yml"
 
 #2 Pip install
