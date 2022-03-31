@@ -14,8 +14,10 @@
   fail: msg="OS not supported,exit!"
   when: ansible_distribution not in common_os_support
 
-- include: "{{ansible_os_family}}.yml"
+- set_fact:
+    ansible_python_interpreter: "/usr/bin/python3"
 
+- include: "{{ansible_os_family}}.yml"
 
 #2 Pip install
 - block:
