@@ -1,10 +1,6 @@
 - name: System Upgrade
   yum: name=* state=latest
-  when: common_system_upgrade and (init == '1' or init == 1) and ansible_distribution_major_version != "8"
-
-- name: System Upgrade
-  dnf: name=* state=latest
-  when: common_system_upgrade and (init == '1' or init == 1) and ansible_distribution_major_version == "8"
+  when: common_system_upgrade and (init == '1' or init == 1) 
 
 - name: OracleLinux8 create pip softlink
   shell: |
