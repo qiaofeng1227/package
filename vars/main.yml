@@ -1,0 +1,48 @@
+common_packages_redhat:
+  - mosh
+  - wget
+  - openssl
+  - unzip
+  - bzip2
+  - expect
+  - at
+  - tree
+  - vim
+  - screen
+  - pwgen
+  - git
+  - htop
+  - ImageMagick
+  - inotify-tools
+  - libselinux-python
+  - yum-utils
+  - gcc
+  - jq
+  - telnet
+
+common_packages_debian:
+  - acl
+  - mosh
+  - curl
+  - gnupg2
+  - ca-certificates
+  - lsb-release
+  - wget
+  - openssl
+  - unzip
+  - bzip2
+  - expect
+  - at
+  - tree
+  - vim
+  - screen
+  - pwgen
+  - git
+  - htop
+  - imagemagick
+  - goaccess
+  - jq
+
+common_packages_redhat_extra:
+
+common_packages_debian_extra:
