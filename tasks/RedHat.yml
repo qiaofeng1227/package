@@ -66,7 +66,7 @@
 
     - debug: 
         msg: "{{ extra_install_result | json_query('results[*].results[*]') }}"
-    when: common_packages_redhat_extra defined and common_packages_redhat_extra not none and common_packages_redhat_extra != ""
+    when: common_packages_redhat_extra is defined and common_packages_redhat_extra is not none and common_packages_redhat_extra != ""
 
   - name: intall mlocate
     shell: |
