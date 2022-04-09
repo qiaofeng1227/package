@@ -43,6 +43,6 @@ common_packages_debian:
   - goaccess
   - jq
 
-common_packages_redhat_extra:
+common_packages_redhat_extra: []
 
-common_packages_debian_extra:
+common_packages_debian_extra: []
