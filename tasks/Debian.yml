@@ -16,11 +16,18 @@
 
 - block:    
   - name: Install Common Software
-    apt: 
-      name: [acl,mosh,curl,gnupg2,ca-certificates,lsb-release,wget,openssl,unzip,bzip2,expect,at,tree,vim,screen,pwgen,git,htop,imagemagick,goaccess,jq]
+    apt:
+      name: "{{ item }}"
       state: latest
       force_apt_get: True
       allow_unauthenticated: yes
+      update_cache: yes
+    failed_when: False
+    register: common_install_result
+    loop: "{{ common_packages_debian }}"
+
+  - debug: 
+      msg: "{{ common_install_result | json_query('results[*].results[*]') }}"
       
   - name: Install locate
     shell: |
