@@ -53,7 +53,21 @@
 
   - debug: 
       msg: "{{ common_install_result | json_query('results[*].results[*]') }}"
-  
+      
+  - block:
+    - name: Install extra Software
+      yum: 
+        name: "{{ item }}"
+        state: latest
+        update_cache: yes
+      register: extra_install_result
+      failed_when: False
+      loop: "{{ common_packages_redhat_extra }}"
+
+    - debug: 
+      msg: "{{ extra_install_result | json_query('results[*].results[*]') }}"
+    when: common_packages_redhat_extra defined and common_packages_redhat_extra not none and common_packages_redhat_extra != ""
+
   - name: intall mlocate
     shell: |
       yum install mlocate -y
