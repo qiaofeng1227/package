@@ -12,6 +12,7 @@
     name: [epel-release,centos-release-scl]
     update_cache: yes
     state: latest
+  failed_when: False
   when: ansible_distribution != 'Amazon' and ansible_distribution != 'OracleLinux'
 
 - block:
