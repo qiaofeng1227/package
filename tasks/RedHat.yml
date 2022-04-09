@@ -43,7 +43,15 @@
 - block:
   - name: Install Common Software
     yum: 
-      name: [mosh,wget,openssl,unzip,bzip2,expect,at,tree,vim,screen,pwgen,git,htop,ImageMagick,inotify-tools,libselinux-python,yum-utils,gcc,jq,telnet]
+      name: "{{ item }}"
+      state: latest
+      update_cache: yes
+    register: common_install_result
+    failed_when: False
+    loop: "{{ common_packages_redhat }}"
+
+  - debug: 
+      msg: "{{ common_install_result | json_query('results[*].results[*]') }}"
   
   - name: intall mlocate
     shell: |
