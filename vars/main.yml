@@ -42,6 +42,7 @@ common_packages_debian:
   - imagemagick
   - goaccess
   - jq
+  - net-tools
 
 common_packages_redhat_extra: []
 
