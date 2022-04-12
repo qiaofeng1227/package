@@ -15,12 +15,13 @@ common_packages_redhat:
   - ImageMagick
   - inotify-tools
   - libselinux-python
+  - libselinux-python3
   - yum-utils
   - gcc
   - jq
   - telnet
   - mlocate
-  
+
 common_packages_debian:
   - acl
   - mosh
