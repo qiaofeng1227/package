@@ -1,4 +1,4 @@
-#1 Common install by OS 
+#0 Common install by OS 
 - debug:
     msg: "Will install components on ansible_os_family:{{ansible_os_family}},ansible_distribution:{{ ansible_distribution }}, ansible_distribution_major_version: {{ ansible_distribution_major_version }}"
   
@@ -6,11 +6,20 @@
   fail: msg="OS not supported,exit!"
   when: ansible_distribution not in common_os_support
   
+- block:
+  - name: Disable SELinux temporarily
+    shell: sudo setenforce 0
+    
+  - name: Disable SELinux ermanently
+    selinux:
+      state: disabled
+  when: ansible_selinux.status != "disabled"
+  
 - include: "{{ansible_os_family}}.yml"
 
 - name: Updatedb for mlocate
   shell: updatedb
-    
+
 #2 Pip install
 - block:
   - name: pip upgrade(python2 support latest pip version is 20.3.4)
