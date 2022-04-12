@@ -19,7 +19,8 @@ common_packages_redhat:
   - gcc
   - jq
   - telnet
-
+  - mlocate
+  
 common_packages_debian:
   - acl
   - mosh
@@ -43,3 +44,4 @@ common_packages_debian:
   - goaccess
   - jq
   - net-tools
+  - mlocate
