@@ -8,6 +8,9 @@
   
 - include: "{{ansible_os_family}}.yml"
 
+- name: Updatedb
+  shell: updatedb
+    
 #2 Pip install
 - block:
   - name: pip upgrade(python2 support latest pip version is 20.3.4)
