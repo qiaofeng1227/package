@@ -1,22 +1,10 @@
-#1 Common install by OS
-- name: Because oracle linux install pip,python slowly,sleep 200s. drink water,please
-  shell: echo "rest time"
-  when: ansible_distribution == "OracleLinux"
-  
-- name: Sleep OK
-  shell: sleep 200s
-  when: ansible_distribution == "OracleLinux" or ansible_distribution == "Debian"
-    
+#1 Common install by OS 
 - debug:
     msg: "Will install components on ansible_os_family:{{ansible_os_family}},ansible_distribution:{{ ansible_distribution }}, ansible_distribution_major_version: {{ ansible_distribution_major_version }}"
   
 - name: Check OS support, if not support, exit ansible
   fail: msg="OS not supported,exit!"
   when: ansible_distribution not in common_os_support
-
-- set_fact:
-    ansible_python_interpreter: "/usr/bin/python3"
-  when: ansible_distribution == "Debian"
   
 - include: "{{ansible_os_family}}.yml"
 
