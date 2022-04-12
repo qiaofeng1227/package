@@ -93,11 +93,11 @@
 - block:
   - name: Disable SELinux temporarily
     shell: sudo setenforce 0
-
+    
   - name: Disable SELinux ermanently
     selinux:
       state: disabled
-  when: ansible_selinux.status != 'disabled'
+  when: ansible_selinux.status != "disabled"
   
 - name: Setting rc.d 0750
   file:
