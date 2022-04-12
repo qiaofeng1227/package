@@ -1,3 +1,11 @@
+- name: Because oracle linux install pip,python slowly,sleep 200s. drink water,please
+  shell: echo "rest time"
+  when: ansible_distribution == "OracleLinux"
+  
+- name: Sleep OK
+  shell: sleep 200s
+  when: ansible_distribution == "OracleLinux"
+  
 - name: System Upgrade
   yum: name=* state=latest
   when: common_system_upgrade and (init == '1' or init == 1) 
