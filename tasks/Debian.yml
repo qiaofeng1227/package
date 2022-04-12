@@ -45,10 +45,8 @@
         msg: "{{ extra_install_result | json_query('results[*].results[*]') }}"
     when: common_packages_debian_extra is defined and common_packages_debian_extra is not none and common_packages_debian_extra != ""
     
-  - name: Install locate
-    shell: |
-      apt-get install mlocate
-      updatedb
+  - name: Updatedb
+    shell: updatedb
       
   when: common_install_components
 
