@@ -8,7 +8,7 @@
   
 - include: "{{ansible_os_family}}.yml"
 
-- name: Updatedb
+- name: Updatedb for mlocate
   shell: updatedb
     
 #2 Pip install
