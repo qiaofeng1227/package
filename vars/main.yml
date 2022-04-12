@@ -43,7 +43,3 @@ common_packages_debian:
   - goaccess
   - jq
   - net-tools
-
-common_packages_redhat_extra: []
-
-common_packages_debian_extra: []
