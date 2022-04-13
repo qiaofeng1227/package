@@ -46,3 +46,4 @@ common_packages_debian:
   - jq
   - net-tools
   - mlocate
+  - chrony
