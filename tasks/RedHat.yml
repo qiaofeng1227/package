@@ -96,14 +96,6 @@
     mode: 0750
   when: common_set_rclocal
 
-- name: Install PyMySQL on pip2
-  pip:
-    name: PyMySQL
-    version: 0.10.1
-    extra_args: "-U"
-    executable: pip2
-  when: ansible_lsb.id != "CentOSStream"
-
 # install docker on CentOS
 - block:
   - name: Install required packages
