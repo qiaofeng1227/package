@@ -7,15 +7,6 @@
   when: ansible_distribution not in common_os_support
   
 - include: "{{ansible_os_family}}.yml"
-
-- block:
-  - name: Disable SELinux temporarily
-    shell: sudo setenforce 0
-    
-  - name: Disable SELinux ermanently
-    selinux:
-      state: disabled
-  when: ansible_selinux.status != "disabled"
   
 - name: Updatedb for mlocate
   shell: updatedb
