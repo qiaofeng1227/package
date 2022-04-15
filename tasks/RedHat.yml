@@ -96,6 +96,15 @@
     mode: 0750
   when: common_set_rclocal
 
+- block:
+  - name: Disable SELinux temporarily(have not  SELinux on Debian )
+    shell: sudo setenforce 0
+    
+  - name: Disable SELinux ermanently
+    selinux:
+      state: disabled
+  when: ansible_selinux.status != "disabled"
+
 # install docker on CentOS
 - block:
   - name: Install required packages
