@@ -1,7 +1,3 @@
-- set_fact:
-    ansible_python_interpreter: "/usr/bin/python3"
-  when: ansible_distribution == "Debian"
-  
 - name: Update apt repository list cache
   apt:
     update_cache: yes
