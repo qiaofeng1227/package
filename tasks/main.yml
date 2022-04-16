@@ -6,6 +6,10 @@
   fail: msg="OS not supported,exit!"
   when: ansible_distribution not in common_os_support
 
+- name: check jdk variable 
+  shell: cat /root/.bashrc
+  register: bashrc_result
+  
 - name: Set env
   shell: /bin/echo {{ item }} >> /root/.bashrc; source /root/.bashrc --default executable=/bin/bash
   when: bashrc_result.stdout.find('ansible_python_interpreter') == -1
